@@ -15,6 +15,13 @@ addButton.addEventListener("click", (event) => {
   event.preventDefault();
 
   // TODO: Validate input before submitting
+  if (
+    inputTitle.value.trim() === "" 
+    || inputAuthor.value.trim() === ""
+    ) {
+    alert("All fields must be filled out.");
+    return;
+  }
 
   addBookToLibrary();
   form.reset();
@@ -29,7 +36,7 @@ function Book(title, author) {
 
 function addBookToLibrary() {
   // Create book object
-  const book = new Book(inputTitle.value, inputAuthor.value);
+  const book = new Book(inputTitle.value.trim(), inputAuthor.value.trim());
 
   // Add book to myLibrary
   myLibrary.push(book);
